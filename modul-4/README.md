@@ -68,7 +68,20 @@ Penjelasan:
 - Base Case: Jika n == 0, maka faktorial dari 0 adalah 1.
 - Recursive Case: Jika tidak, maka akan dilakukan pemanggilan fungsi rekursif faktorial(n-1) hingga mencapai base case.
 
-## Latihan 1: Deret Fibonacci dengan Rekursif
+## Latihan 1: Menghitung Pangkat Bilangan
+Buatlah program rekursif untuk menghitung x pangkat y (`x^y`)
+### Contoh Input:
+```
+x = 2
+y = 5
+```
+### Contoh Output:
+```
+2^5 = 32
+```
+``Karena 2 x 2 x 2 x 2 x 2 = 32``
+
+## Latihan 2: Deret Fibonacci dengan Rekursif
 Deret Fibonacci adalah deret angka yang dimulai dari 0 dan 1, di mana setiap angka berikutnya adalah hasil penjumlahan dari dua angka sebelumnya. Buatlah sebuah program untuk menghitung angka Fibonacci ke-n menggunakan rekursi.
 
 Contoh Deret Fibonacci: 
@@ -82,7 +95,7 @@ Hint:
     - Jika n == 1, kembalikan 1.
 - Pada recursive case, kembalikan nilai fibonacci(n-1) + fibonacci(n-2).
 
-## Latihan 2:
+## Tugas Terbimbing:
 Buatlah program yang mengimplementasikan rekursif untuk menampilkan barisan bilangan ganjil.
 Masukan terdiri dari sebuah bilangan bulat positif N.
 Keluaran terdiri dari barisan bilangan ganjil dari 1 hingga N.
