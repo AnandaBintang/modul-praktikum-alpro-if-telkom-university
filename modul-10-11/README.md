@@ -126,4 +126,55 @@ func main() {
     isSortedArray
     ```
 
-4. Buatlah Sequential Algoritm dengan menggunakan while looping.
+3. Buatlah Sequential Algoritm dengan menggunakan while looping.
+4. Kamu diminta untuk menebak sebuah angka rahasia dalam rentang 1 hingga n. Sistem akan memberimu informasi apakah tebakanmu:
+   - terlalu kecil ("low"),
+   - terlalu besar ("high"), atau
+   - benar ("correct").
+   - Gunakan binary search untuk menebak angka tersebut dengan jumlah tebakan sesedikit mungkin.
+
+```go
+package main
+
+import "fmt"
+
+// Disediakan oleh sistem (simulasi untuk testing lokal)
+var secret = 6
+
+func guess(num int) string {
+	return "" // TODO: Lengkapi logika perbandingan
+}
+
+func guessNumber(n int) int {
+	low := 1
+	high := n
+
+	for low <= high {
+		mid := 0 // TODO: Hitung mid dengan benar
+
+		// Panggil fungsi guess
+		result := guess(mid)
+
+		// TODO: Lengkapi logika pengambilan keputusan
+		// Jika "correct", return mid
+		// Jika "low", perbarui low
+		// Jika "high", perbarui high
+	}
+
+	// Jika tidak ditemukan (opsional, seharusnya tidak terjadi)
+	return -1
+}
+
+func main() {
+	n := 10
+	result := guessNumber(n)
+	fmt.Printf("Angka rahasia adalah: %d\n", result)
+}
+
+
+```
+
+Contoh Output :
+```
+Angka rahasia adalah: 6
+```
