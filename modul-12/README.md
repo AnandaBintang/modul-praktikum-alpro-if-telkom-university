@@ -98,7 +98,7 @@ Iterasi 10 : <br>
 (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) → Tidak terjadi swap (Hasil Akhir)
 <br><br>
 
-Proses Dalam Tabel : 
+Proses Dalam Tabel (Angka Awal: 8, 5, 2, 6, 9, 3, 1, 4, 0, 7): 
 | Iterasi | Langkah Perbandingan                                                                 | Status Swap           | Hasil Sementara                         |
 |---------|----------------------------------------------------------------------------------------|------------------------|------------------------------------------|
 | 1       | Min: 8 → 5 → 2 → 2 → 2 → 2 → 1 → 1 → 0 → 0                                            | Swap(8, 0)             | (0), 5, 2, 6, 9, 3, 1, 4, 8, 7            |
