@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insertion Sort Animation - Key vs Swap</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        background: #f9f9f9;
+        padding: 40px;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      .bar-container {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+        height: 200px;
+        margin: 20px 0;
+      }
+      .bar {
+        width: 30px;
+        background: #3498db;
+        color: white;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+        transition: all 0.5s ease;
+      }
+      .bar.active {
+        background: #e74c3c;
+      }
+      .bar.sorted {
+        background: #2ecc71;
+      }
+      button,
+      select {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Insertion Sort Animation</h1>
+
+    <label for="speed">Animation Speed: </label>
+    <select id="speed">
+      <option value="200">Fast</option>
+      <option value="400" selected>Medium</option>
+      <option value="800">Slow</option>
+    </select>
+
+    <h2>Metode 1: Menggeser dengan Key</h2>
+    <div class="bar-container" id="barKey"></div>
+    <button onclick="startSortKey()">Start Key Method</button>
+
+    <h2>Metode 2: Menukar Elemen (Swap)</h2>
+    <div class="bar-container" id="barSwap"></div>
+    <button onclick="startSortSwap()">Start Swap Method</button>
+
+    <script>
+      const originalData = [10, 5, 3, 1, 2, 9, 7, 4, 6];
+
+      function getSpeed() {
+        const speed = document.getElementById("speed").value;
+        return parseInt(speed);
+      }
+
+      function createBars(containerId, data) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        data.forEach((value) => {
+          const bar = document.createElement("div");
+          bar.classList.add("bar");
+          bar.style.height = `${value * 10}px`;
+          bar.textContent = value;
+          container.appendChild(bar);
+        });
+      }
+
+      async function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function startSortKey() {
+        const data = [...originalData];
+        createBars("barKey", data);
+        const container = document.getElementById("barKey");
+        const bars = container.children;
+        const speed = getSpeed();
+
+        for (let i = 1; i < data.length; i++) {
+          let key = data[i];
+          let j = i - 1;
+          while (j >= 0 && data[j] > key) {
+            data[j + 1] = data[j];
+
+            bars[j + 1].style.height = `${data[j + 1] * 10}px`;
+            bars[j + 1].textContent = data[j + 1];
+            bars[j].classList.add("active");
+            bars[j + 1].classList.add("active");
+
+            await sleep(speed);
+
+            bars[j].classList.remove("active");
+            bars[j + 1].classList.remove("active");
+            j--;
+          }
+          data[j + 1] = key;
+          bars[j + 1].style.height = `${key * 10}px`;
+          bars[j + 1].textContent = key;
+        }
+
+        Array.from(bars).forEach((bar) => bar.classList.add("sorted"));
+      }
+
+      async function startSortSwap() {
+        const data = [...originalData];
+        createBars("barSwap", data);
+        const container = document.getElementById("barSwap");
+        const bars = container.children;
+        const speed = getSpeed();
+
+        for (let i = 1; i < data.length; i++) {
+          if (data[i] < data[i - 1]) {
+            let j = i;
+            while (j > 0 && data[j] < data[j - 1]) {
+              [data[j], data[j - 1]] = [data[j - 1], data[j]];
+
+              bars[j].style.height = `${data[j] * 10}px`;
+              bars[j].textContent = data[j];
+              bars[j - 1].style.height = `${data[j - 1] * 10}px`;
+              bars[j - 1].textContent = data[j - 1];
+
+              bars[j].classList.add("active");
+              bars[j - 1].classList.add("active");
+
+              await sleep(speed);
+
+              bars[j].classList.remove("active");
+              bars[j - 1].classList.remove("active");
+
+              j--;
+            }
+          }
+        }
+
+        Array.from(bars).forEach((bar) => bar.classList.add("sorted"));
+      }
+
+      createBars("barKey", [...originalData]);
+      createBars("barSwap", [...originalData]);
+    </script>
+  </body>
+</html>
