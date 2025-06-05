@@ -151,4 +151,4 @@ praktikum-golang/
 ```
 
 ## Link Pengumpulan
-[Pengumpulan Asesmen Final Alpro](https://forms.office.com/r/BXdaxe0FNz)
+[Pengumpulan Asesmen Final Alpro](https://forms.gle/UkZrxgTsz33vqty57)
